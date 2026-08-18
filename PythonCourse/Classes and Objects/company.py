@@ -1,4 +1,9 @@
-from employee import Employee
+from employee import Employee, SalaryEmployee, HourlyEmployee, ComissionEmployee
+
+# HEADER: Learning classes, objects, functions & fstrings
+# when?: in a project where you're building persona's, the object could be a persona along with it's attributes.
+# ?: ex, 'nationality, skin tone, gender, etc...' and functions could be 'add_personality etc...'
+# ?: & the functions used within that persona to build out the person. 
 
 class Company:
     def __init__(self):
@@ -7,4 +12,43 @@ class Company:
     def add_employees(self, new_employee):
         self.employees.append(new_employee)
 
+    def display_employees(self):
+        print('Current Employees:')
+        for i in self.employees:
+            print(i.fname, i.lname)
+        print('-----------------------')
+
+    def pay_employees(self):
+        print('Paying Employees:')
+        for i in self.employees:
+            print('Paycheck for:', i.fname, i.lname)
+            print(f'Amount: ${i.calculate_paycheck():,.2f}')
+            print('---------------------------------')    
+
+#  f'text {variable} more text'
+#  f before the quotes = tells Python "look for {} and evaluate what's inside"
+#  {} = drop in any variable or expression, gets converted to string automatically
+
         
+
+        
+def main():
+    my_company = Company()
+
+
+    employee1 = SalaryEmployee('Sarah', 'Hess', 50000)
+    my_company.add_employees(employee1)
+
+    employee2 = HourlyEmployee('Lee', 'Smith', 25, 50)
+    my_company.add_employees(employee2)
+
+    employee3 = ComissionEmployee('Bob', 'Brown', 30000, 5, 200)
+    my_company.add_employees(employee3)
+
+    my_company.display_employees()
+    my_company.pay_employees()
+
+
+main()
+
+
